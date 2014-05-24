@@ -14,17 +14,17 @@ public static class StringExtensions
     }
 
 
-    public static string ToSmartString<T>(this List<T> list)
+    public static string ToSmartString<T>(this IEnumerable<T> list)
     {
         return list.ToSmartString(x => x, ", ");
     }
 
-    public static string ToSmartString<T>(this List<T> list, string separator)
+    public static string ToSmartString<T>(this IEnumerable<T> list, string separator)
     {
         return list.ToSmartString(x => x, separator);
     }
 
-    public static string ToSmartString<T, U>(this List<T> list, System.Func<T, U> func, string separator = ", ")
+    public static string ToSmartString<T, U>(this IEnumerable<T> list, System.Func<T, U> func, string separator = ", ")
     {
         string str = "";
 
@@ -38,24 +38,6 @@ public static class StringExtensions
             else
                 str += "NULL" + separator;
         }
-
-        return str.Length > separator.Length ? str.Substring(0, str.Length - separator.Length) : str;
-    }
-
-    public static string ToSmartString<T>(this T[] array)
-    {
-        return array.ToSmartString(x => x, ", ");
-    }
-    public static string ToSmartString<T>(this T[] array, string separator)
-    {
-        return array.ToSmartString(x => x, separator);
-    }
-    public static string ToSmartString<T, U>(this T[] array, System.Func<T, U> func, string separator = ", ")
-    {
-        string str = "";
-
-        foreach (T t in array)
-            str += (t != null ? func(t).ToString() : "NULL") + separator;
 
         return str.Length > separator.Length ? str.Substring(0, str.Length - separator.Length) : str;
     }

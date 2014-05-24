@@ -151,3 +151,16 @@ public static class RendererExtension
         return r.bounds.center;
     }
 }
+
+public static class CameraExtension
+{
+    public static Ray MouseRay(this Camera cam)
+    {
+        return cam.ScreenPointToRay(Input.mousePosition);
+    }
+
+    public static Vector3 MouseWorldPos(this Camera cam)
+    {
+        return cam.ScreenToWorldPoint(Input.mousePosition);
+    }
+}
