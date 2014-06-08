@@ -10,15 +10,15 @@ public static class SmartfoxEditorObject
     [MenuItem("GameObject/Create Other/Smartfox/SmartfoxSingleton")]
     public static void AddSmartfoxSingleton()
     {
-        if (GameObject.FindObjectOfType<SmartfoxSingleton>() != null)
+        if (GameObject.FindObjectOfType<SmartfoxConnection>() != null)
         {
             Debug.LogError("There already is a SmartfoxSingleton in that scene");
-            EditorGUIUtility.PingObject(GameObject.FindObjectOfType<SmartfoxSingleton>());
+            EditorGUIUtility.PingObject(GameObject.FindObjectOfType<SmartfoxConnection>());
         }
         else
         {
             GameObject go = new GameObject("SmartfoxSingleton");
-            go.AddComponent<SmartfoxSingleton>();
+            go.AddComponent<SmartfoxConnection>();
         }
     }
 }
